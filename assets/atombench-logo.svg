@@ -1,0 +1,20 @@
+<svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">ATOM-Bench logo</title>
+  <desc id="desc">A concise atom-style logo with colored atomic skill nodes on orbital paths and a central composed skill node.</desc>
+  <circle cx="48" cy="48" r="44" fill="#E9894F"/>
+  <circle cx="48" cy="48" r="40.5" fill="#F3A063" stroke="#111316" stroke-width="3"/>
+
+  <!-- Clean atom-style orbits -->
+  <ellipse cx="48" cy="48" rx="16.2" ry="37" stroke="#111316" stroke-width="2.8" stroke-linecap="round"/>
+  <ellipse cx="48" cy="48" rx="16.2" ry="37" transform="rotate(60 48 48)" stroke="#111316" stroke-width="2.8" stroke-linecap="round"/>
+  <ellipse cx="48" cy="48" rx="16.2" ry="37" transform="rotate(-60 48 48)" stroke="#111316" stroke-width="2.8" stroke-linecap="round"/>
+
+  <!-- Atomic skill nodes on different orbits -->
+  <circle cx="48" cy="11" r="5" fill="#2F6FA7" stroke="#111316" stroke-width="1.7"/>
+  <circle cx="80" cy="66.5" r="5" fill="#7C5CA8" stroke="#111316" stroke-width="1.7"/>
+  <circle cx="16" cy="66.5" r="5" fill="#DE8648" stroke="#111316" stroke-width="1.7"/>
+
+  <!-- Composed skill node -->
+  <circle cx="48" cy="48" r="12.8" fill="#CFE4FF" stroke="#111316" stroke-width="2.3"/>
+  <text x="48" y="53.8" text-anchor="middle" font-family="Arial Black, Inter, Arial, sans-serif" font-size="15.4" font-weight="900" fill="#111316" letter-spacing="0">AB</text>
+</svg>
