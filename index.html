@@ -950,11 +950,72 @@
         text-transform: none;
       }
 
+      .atom-video-model {
+        color: #295b97;
+        font-weight: 950;
+      }
+
       .atom-video-prompt {
         margin: 0;
         color: #2f3439;
         font-size: 14px;
         line-height: 1.5;
+      }
+
+      .rollout-group {
+        margin-top: 22px;
+      }
+
+      .rollout-group:first-child {
+        margin-top: 0;
+      }
+
+      .rollout-group-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: baseline;
+        margin-bottom: 12px;
+      }
+
+      .rollout-group-head h3 {
+        margin: 0;
+        font-size: 18px;
+      }
+
+      .rollout-count {
+        color: rgba(255, 255, 255, 0.62);
+        font-size: 13px;
+        font-weight: 760;
+      }
+
+      .rollout-status {
+        font-weight: 900;
+      }
+
+      .rollout-status.success {
+        color: #34d399;
+      }
+
+      .rollout-status.fail {
+        color: #fb7185;
+      }
+
+      .atom-video-card.success {
+        border-color: rgba(52, 211, 153, 0.36);
+      }
+
+      .atom-video-card.fail {
+        border-color: rgba(251, 113, 133, 0.38);
+      }
+
+      .rollout-empty {
+        grid-column: 1 / -1;
+        padding: 24px;
+        border: 1px dashed rgba(255, 255, 255, 0.24);
+        border-radius: 8px;
+        color: rgba(255, 255, 255, 0.66);
+        background: rgba(255, 255, 255, 0.04);
       }
 
       .release {
@@ -1130,7 +1191,6 @@
           <a href="#platforms">Platforms</a>
           <a href="#results">Results</a>
           <a href="#media">Videos</a>
-          <a href="#release">Release</a>
         </div>
       </div>
     </nav>
@@ -1591,10 +1651,10 @@
       <section class="protocol" id="media">
         <div class="section-inner">
           <p class="section-kicker">Videos</p>
-          <h2>Atomic task video examples.</h2>
+          <h2>Rollout video examples.</h2>
           <p class="section-lead">
-            Browse single-arm Franka Panda and dual-arm Cobot Magic examples for the motor and instruction
-            atoms used by ATOM-Bench.
+            Browse success and failure rollouts. Each card parses the model and task id from its filename,
+            then keeps the corresponding task prompt visible below the video.
           </p>
           <div class="video-tabs">
             <div class="tab-list" role="tablist" aria-label="Atomic task video platforms">
@@ -1607,261 +1667,47 @@
             </div>
 
             <div class="video-tab-panel" id="franka-videos" role="tabpanel" aria-labelledby="franka-tab">
-              <div class="atom-video-grid">
-                <article class="atom-video-card">
-                  <video src="assets/videos/atom_franka/m1.mp4" controls muted playsinline preload="metadata"></video>
-                  <div class="atom-video-copy">
-                    <div class="atom-video-meta"><span class="atom-video-id">m1</span><span class="atom-video-skill">pick_place</span></div>
-                    <p class="atom-video-prompt">Pick up the cube and place it into the basket.</p>
-                  </div>
-                </article>
-                <article class="atom-video-card">
-                  <video src="assets/videos/atom_franka/m2.mp4" controls muted playsinline preload="metadata"></video>
-                  <div class="atom-video-copy">
-                    <div class="atom-video-meta"><span class="atom-video-id">m2</span><span class="atom-video-skill">pick_place</span></div>
-                    <p class="atom-video-prompt">Pick up the ball and place it into the basket.</p>
-                  </div>
-                </article>
-                <article class="atom-video-card">
-                  <video src="assets/videos/atom_franka/m3.mp4" controls muted playsinline preload="metadata"></video>
-                  <div class="atom-video-copy">
-                    <div class="atom-video-meta"><span class="atom-video-id">m3</span><span class="atom-video-skill">reorient</span></div>
-                    <p class="atom-video-prompt">Place the bottle upright on the tray.</p>
-                  </div>
-                </article>
-                <article class="atom-video-card">
-                  <video src="assets/videos/atom_franka/m4.mp4" controls muted playsinline preload="metadata"></video>
-                  <div class="atom-video-copy">
-                    <div class="atom-video-meta"><span class="atom-video-id">m4</span><span class="atom-video-skill">push</span></div>
-                    <p class="atom-video-prompt">Push the cube into the marked area.</p>
-                  </div>
-                </article>
-                <article class="atom-video-card">
-                  <video src="assets/videos/atom_franka/m5.mp4" controls muted playsinline preload="metadata"></video>
-                  <div class="atom-video-copy">
-                    <div class="atom-video-meta"><span class="atom-video-id">m5</span><span class="atom-video-skill">pour</span></div>
-                    <p class="atom-video-prompt">Pour the coffee beans from the cup into the bowl.</p>
-                  </div>
-                </article>
-                <article class="atom-video-card">
-                  <video src="assets/videos/atom_franka/m6.mp4" controls muted playsinline preload="metadata"></video>
-                  <div class="atom-video-copy">
-                    <div class="atom-video-meta"><span class="atom-video-id">m6</span><span class="atom-video-skill">access</span></div>
-                    <p class="atom-video-prompt">Open the drawer, then close it.</p>
-                  </div>
-                </article>
-                <article class="atom-video-card">
-                  <video src="assets/videos/atom_franka/m7.mp4" controls muted playsinline preload="metadata"></video>
-                  <div class="atom-video-copy">
-                    <div class="atom-video-meta"><span class="atom-video-id">m7</span><span class="atom-video-skill">stack</span></div>
-                    <p class="atom-video-prompt">Stack the two cubes.</p>
-                  </div>
-                </article>
-                <article class="atom-video-card">
-                  <video src="assets/videos/atom_franka/m8.mp4" controls muted playsinline preload="metadata"></video>
-                  <div class="atom-video-copy">
-                    <div class="atom-video-meta"><span class="atom-video-id">m8</span><span class="atom-video-skill">access</span></div>
-                    <p class="atom-video-prompt">Open the lid, then close it.</p>
-                  </div>
-                </article>
-                <article class="atom-video-card">
-                  <video src="assets/videos/atom_franka/i1.mp4" controls muted playsinline preload="metadata"></video>
-                  <div class="atom-video-copy">
-                    <div class="atom-video-meta"><span class="atom-video-id">i1</span><span class="atom-video-skill">color</span></div>
-                    <p class="atom-video-prompt">Pick up the blue cube and place it into the basket.</p>
-                  </div>
-                </article>
-                <article class="atom-video-card">
-                  <video src="assets/videos/atom_franka/i2.mp4" controls muted playsinline preload="metadata"></video>
-                  <div class="atom-video-copy">
-                    <div class="atom-video-meta"><span class="atom-video-id">i2</span><span class="atom-video-skill">shape</span></div>
-                    <p class="atom-video-prompt">Pick up the triangular block and place it into the basket.</p>
-                  </div>
-                </article>
-                <article class="atom-video-card">
-                  <video src="assets/videos/atom_franka/i3.mp4" controls muted playsinline preload="metadata"></video>
-                  <div class="atom-video-copy">
-                    <div class="atom-video-meta"><span class="atom-video-id">i3</span><span class="atom-video-skill">size</span></div>
-                    <p class="atom-video-prompt">Pick up the largest block and place it onto the tray.</p>
-                  </div>
-                </article>
-                <article class="atom-video-card">
-                  <video src="assets/videos/atom_franka/i4.mp4" controls muted playsinline preload="metadata"></video>
-                  <div class="atom-video-copy">
-                    <div class="atom-video-meta"><span class="atom-video-id">i4</span><span class="atom-video-skill">source_relation</span></div>
-                    <p class="atom-video-prompt">Pick up the object to the left of the cylinder and place it into the basket.</p>
-                  </div>
-                </article>
-                <article class="atom-video-card">
-                  <video src="assets/videos/atom_franka/i5.mp4" controls muted playsinline preload="metadata"></video>
-                  <div class="atom-video-copy">
-                    <div class="atom-video-meta"><span class="atom-video-id">i5</span><span class="atom-video-skill">count</span></div>
-                    <p class="atom-video-prompt">Pick up exactly two blocks and place them into the basket.</p>
-                  </div>
-                </article>
-                <article class="atom-video-card">
-                  <video src="assets/videos/atom_franka/i6.mp4" controls muted playsinline preload="metadata"></video>
-                  <div class="atom-video-copy">
-                    <div class="atom-video-meta"><span class="atom-video-id">i6</span><span class="atom-video-skill">goal_destination</span></div>
-                    <p class="atom-video-prompt">Pick up the red cube and place it into the right basket.</p>
-                  </div>
-                </article>
-                <article class="atom-video-card">
-                  <video src="assets/videos/atom_franka/i7.mp4" controls muted playsinline preload="metadata"></video>
-                  <div class="atom-video-copy">
-                    <div class="atom-video-meta"><span class="atom-video-id">i7</span><span class="atom-video-skill">exclusion</span></div>
-                    <p class="atom-video-prompt">Place all non-red objects into the basket.</p>
-                  </div>
-                </article>
+              <div class="rollout-group">
+                <div class="rollout-group-head">
+                  <h3><span class="rollout-status success">Success</span> rollouts</h3>
+                  <span class="rollout-count" data-rollout-count="franka-success"></span>
+                </div>
+                <div class="atom-video-grid" data-rollout-grid="franka-success"></div>
+              </div>
+              <div class="rollout-group">
+                <div class="rollout-group-head">
+                  <h3><span class="rollout-status fail">Failure</span> rollouts</h3>
+                  <span class="rollout-count" data-rollout-count="franka-fail"></span>
+                </div>
+                <div class="atom-video-grid" data-rollout-grid="franka-fail"></div>
               </div>
             </div>
 
             <div class="video-tab-panel" id="cobot-videos" role="tabpanel" aria-labelledby="cobot-tab" hidden>
-              <div class="atom-video-grid">
-                <article class="atom-video-card">
-                  <video src="assets/videos/atom_agilex_h264/dm1.mp4" controls muted playsinline preload="metadata"></video>
-                  <div class="atom-video-copy">
-                    <div class="atom-video-meta"><span class="atom-video-id">dm1</span><span class="atom-video-skill">pick_place</span></div>
-                    <p class="atom-video-prompt">Pick up the basket with the left hand and place the cube into the basket with the right hand.</p>
-                  </div>
-                </article>
-                <article class="atom-video-card">
-                  <video src="assets/videos/atom_agilex_h264/dm2.mp4" controls muted playsinline preload="metadata"></video>
-                  <div class="atom-video-copy">
-                    <div class="atom-video-meta"><span class="atom-video-id">dm2</span><span class="atom-video-skill">pick_place</span></div>
-                    <p class="atom-video-prompt">Pick up the basket with the left hand and place the ball into the basket with the right hand.</p>
-                  </div>
-                </article>
-                <article class="atom-video-card">
-                  <video src="assets/videos/atom_agilex_h264/dm3.mp4" controls muted playsinline preload="metadata"></video>
-                  <div class="atom-video-copy">
-                    <div class="atom-video-meta"><span class="atom-video-id">dm3</span><span class="atom-video-skill">reorient</span></div>
-                    <p class="atom-video-prompt">Place the bottles upright on the tray.</p>
-                  </div>
-                </article>
-                <article class="atom-video-card">
-                  <video src="assets/videos/atom_agilex_h264/dm4.mp4" controls muted playsinline preload="metadata"></video>
-                  <div class="atom-video-copy">
-                    <div class="atom-video-meta"><span class="atom-video-id">dm4</span><span class="atom-video-skill">push</span></div>
-                    <p class="atom-video-prompt">Push the two cubes into the marked area.</p>
-                  </div>
-                </article>
-                <article class="atom-video-card">
-                  <video src="assets/videos/atom_agilex_h264/dm5.mp4" controls muted playsinline preload="metadata"></video>
-                  <div class="atom-video-copy">
-                    <div class="atom-video-meta"><span class="atom-video-id">dm5</span><span class="atom-video-skill">pour</span></div>
-                    <p class="atom-video-prompt">Pick up the bowl with the left hand and pour the coffee beans from the cup into the bowl with the right hand.</p>
-                  </div>
-                </article>
-                <article class="atom-video-card">
-                  <video src="assets/videos/atom_agilex_h264/dm6.mp4" controls muted playsinline preload="metadata"></video>
-                  <div class="atom-video-copy">
-                    <div class="atom-video-meta"><span class="atom-video-id">dm6</span><span class="atom-video-skill">access</span></div>
-                    <p class="atom-video-prompt">Open the drawer with the left hand, place the block into the drawer with the right hand, then close the drawer with the left hand.</p>
-                  </div>
-                </article>
-                <article class="atom-video-card">
-                  <video src="assets/videos/atom_agilex_h264/dm7.mp4" controls muted playsinline preload="metadata"></video>
-                  <div class="atom-video-copy">
-                    <div class="atom-video-meta"><span class="atom-video-id">dm7</span><span class="atom-video-skill">stack</span></div>
-                    <p class="atom-video-prompt">Pick up one cube with the left hand and another cube with the right hand. First place the cube in the right hand at the target position, then stack the cube in the left hand on top.</p>
-                  </div>
-                </article>
-                <article class="atom-video-card">
-                  <video src="assets/videos/atom_agilex_h264/dm8.mp4" controls muted playsinline preload="metadata"></video>
-                  <div class="atom-video-copy">
-                    <div class="atom-video-meta"><span class="atom-video-id">dm8</span><span class="atom-video-skill">access</span></div>
-                    <p class="atom-video-prompt">Open the box lid with the left hand, place the block into the box with the right hand, then close the box lid with the left hand.</p>
-                  </div>
-                </article>
-                <article class="atom-video-card">
-                  <video src="assets/videos/atom_agilex_h264/di1.mp4" controls muted playsinline preload="metadata"></video>
-                  <div class="atom-video-copy">
-                    <div class="atom-video-meta"><span class="atom-video-id">di1</span><span class="atom-video-skill">color</span></div>
-                    <p class="atom-video-prompt">Pick up the basket with the left hand and place the blue cube into the basket with the right hand.</p>
-                  </div>
-                </article>
-                <article class="atom-video-card">
-                  <video src="assets/videos/atom_agilex_h264/di2.mp4" controls muted playsinline preload="metadata"></video>
-                  <div class="atom-video-copy">
-                    <div class="atom-video-meta"><span class="atom-video-id">di2</span><span class="atom-video-skill">shape</span></div>
-                    <p class="atom-video-prompt">Pick up the basket with the left hand and place the triangular block into the basket with the right hand.</p>
-                  </div>
-                </article>
-                <article class="atom-video-card">
-                  <video src="assets/videos/atom_agilex_h264/di3.mp4" controls muted playsinline preload="metadata"></video>
-                  <div class="atom-video-copy">
-                    <div class="atom-video-meta"><span class="atom-video-id">di3</span><span class="atom-video-skill">size</span></div>
-                    <p class="atom-video-prompt">Pick up the basket with the left hand and place the largest block into the basket with the right hand.</p>
-                  </div>
-                </article>
-                <article class="atom-video-card">
-                  <video src="assets/videos/atom_agilex_h264/di4.mp4" controls muted playsinline preload="metadata"></video>
-                  <div class="atom-video-copy">
-                    <div class="atom-video-meta"><span class="atom-video-id">di4</span><span class="atom-video-skill">source_relation</span></div>
-                    <p class="atom-video-prompt">Pick up the basket with the left hand and place the object to the left of the red cylinder into the basket with the right hand.</p>
-                  </div>
-                </article>
-                <article class="atom-video-card">
-                  <video src="assets/videos/atom_agilex_h264/di5.mp4" controls muted playsinline preload="metadata"></video>
-                  <div class="atom-video-copy">
-                    <div class="atom-video-meta"><span class="atom-video-id">di5</span><span class="atom-video-skill">count</span></div>
-                    <p class="atom-video-prompt">Pick up one cube with each hand and place exactly two cubes into the same basket, leaving the remaining cube outside.</p>
-                  </div>
-                </article>
-                <article class="atom-video-card">
-                  <video src="assets/videos/atom_agilex_h264/di6.mp4" controls muted playsinline preload="metadata"></video>
-                  <div class="atom-video-copy">
-                    <div class="atom-video-meta"><span class="atom-video-id">di6</span><span class="atom-video-skill">goal_destination</span></div>
-                    <p class="atom-video-prompt">Pick up one cube with the left hand and place it into the upper basket. Pick up one cube with the right hand and place it into the lower basket.</p>
-                  </div>
-                </article>
-                <article class="atom-video-card">
-                  <video src="assets/videos/atom_agilex_h264/di7.mp4" controls muted playsinline preload="metadata"></video>
-                  <div class="atom-video-copy">
-                    <div class="atom-video-meta"><span class="atom-video-id">di7</span><span class="atom-video-skill">exclusion</span></div>
-                    <p class="atom-video-prompt">Place all geometric objects except the red cube into the basket.</p>
-                  </div>
-                </article>
+              <div class="rollout-group">
+                <div class="rollout-group-head">
+                  <h3><span class="rollout-status success">Success</span> rollouts</h3>
+                  <span class="rollout-count" data-rollout-count="agilex-success"></span>
+                </div>
+                <div class="atom-video-grid" data-rollout-grid="agilex-success"></div>
+              </div>
+              <div class="rollout-group">
+                <div class="rollout-group-head">
+                  <h3><span class="rollout-status fail">Failure</span> rollouts</h3>
+                  <span class="rollout-count" data-rollout-count="agilex-fail"></span>
+                </div>
+                <div class="atom-video-grid" data-rollout-grid="agilex-fail"></div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="release" id="release">
-        <div class="section-inner">
-          <p class="section-kicker">Release Plan</p>
-          <h2>Designed for reproducible real-world evaluation.</h2>
-          <p class="section-lead">
-            The project page is ready for GitHub Pages deployment. Release links can be updated once the
-            paper, dataset, rollout data, and evaluation assets are public.
-          </p>
-          <div class="release-list">
-            <article class="release-item">
-              <small>Dataset</small>
-              <h3>Demonstration data</h3>
-              <p>3,000 human demonstrations across the atomic task suites for single-arm and dual-arm tracks.</p>
-            </article>
-            <article class="release-item">
-              <small>Evaluation</small>
-              <h3>Rollout data</h3>
-              <p>Physical rollout results, task seeds, and process scoring information for reproducible analysis.</p>
-            </article>
-            <article class="release-item">
-              <small>Benchmark</small>
-              <h3>Task definitions</h3>
-              <p>Prompts, atom annotations, platform details, and metrics for atomic and compositional evaluation.</p>
-            </article>
-          </div>
-        </div>
-      </section>
     </main>
 
     <footer>
       <div class="footer-inner">
         <span>ATOM-Bench: Atomic Skills and Compositional Generalization in Real-World Manipulation.</span>
-        <span>Static site for GitHub Pages.</span>
       </div>
     </footer>
     <script>
@@ -1917,6 +1763,126 @@
 
       const videoTabButtons = document.querySelectorAll("[data-video-tab]");
       const videoTabPanels = document.querySelectorAll(".video-tab-panel");
+
+      const rolloutVideos = {
+        "franka-success": [
+          "assets/videos/franka_success/grootdmix_m2_ep1_20260523_191339.mp4",
+          "assets/videos/franka_success/motusmix_x12_ep0_20260529_114334.mp4",
+          "assets/videos/franka_success/对偶-lingbotvladmix_m5_ep2_20260521_173742.mp4",
+          "assets/videos/franka_success/对偶-pi05dmix_x2_ep2_20260519_114319.mp4",
+          "assets/videos/franka_success/对偶-smolvla_i4_ep2_20260527_142440.mp4"
+        ],
+        "franka-fail": [
+          "assets/videos/franka_fail/lingbotvladmix_m2_ep1_20260520_182747.mp4",
+          "assets/videos/franka_fail/motor-grootdmix_m3_ep7_20260524_180948.mp4",
+          "assets/videos/franka_fail/motusmix_x1_ep5_20260528_220338.mp4",
+          "assets/videos/franka_fail/pi05dmix_x5_ep9_20260527_115827.mp4",
+          "assets/videos/franka_fail/运动错误-smolvla_m4_ep7_20260527_175251.mp4"
+        ],
+        "agilex-success": [],
+        "agilex-fail": []
+      };
+
+      const taskPrompts = {
+        m1: "Pick up the cube and place it into the basket.",
+        m2: "Pick up the ball and place it into the basket.",
+        m3: "Place the bottle upright on the tray.",
+        m4: "Push the cube into the marked area.",
+        m5: "Pour the coffee beans from the cup into the bowl.",
+        m6: "Open the drawer, then close it.",
+        m7: "Stack the two cubes.",
+        m8: "Open the lid, then close it.",
+        i1: "Pick up the blue cube and place it into the basket.",
+        i2: "Pick up the triangular block and place it into the basket.",
+        i3: "Pick up the largest block and place it onto the tray.",
+        i4: "Pick up the object to the left of the cylinder and place it into the basket.",
+        i5: "Pick up exactly two blocks and place them into the basket.",
+        i6: "Pick up the red cube and place it into the right basket.",
+        i7: "Place all non-red objects into the basket.",
+        x1: "Pick up exactly two red cubes and place them into the basket.",
+        x2: "Pick up the non-red object to the right of the cylinder and place it into the basket.",
+        x5: "Place the two smallest bottles upright into the tray.",
+        x12: "Pour the beans from the brown bean dish on the left into the bowl."
+      };
+
+      const taskSkills = {
+        m2: "pick_place",
+        m3: "reorient",
+        m4: "push",
+        m5: "pour",
+        i4: "source_relation",
+        x1: "color + count",
+        x2: "source_relation + exclusion",
+        x5: "reorient + size",
+        x12: "pour + color + source_relation"
+      };
+
+      const getModelName = (rawName) => {
+        const normalized = rawName.toLowerCase();
+
+        if (normalized.includes("pi05")) return "Pi0.5";
+        if (normalized.includes("groot")) return "GROOT N1.6";
+        if (normalized.includes("motus")) return "Motus";
+        if (normalized.includes("lingbotvla")) return "LingBot-VLA";
+        if (normalized.includes("smolvla")) return "SmolVLA";
+        return rawName;
+      };
+
+      const parseRolloutFile = (src) => {
+        const filename = decodeURIComponent(src.split("/").pop());
+        const taskMatch = filename.match(/_((?:d?[mix])\d+)_ep/i);
+        const taskId = taskMatch ? taskMatch[1].toLowerCase() : "unknown";
+        const modelPart = taskMatch ? filename.slice(0, taskMatch.index) : filename.replace(/\.mp4$/i, "");
+        const modelToken = modelPart.split("-").pop();
+
+        return {
+          filename,
+          model: getModelName(modelToken),
+          taskId,
+          prompt: taskPrompts[taskId] || "Prompt will be added for this rollout task.",
+          skill: taskSkills[taskId] || "rollout"
+        };
+      };
+
+      const renderRolloutGrid = (gridKey, sources) => {
+        const grid = document.querySelector(`[data-rollout-grid="${gridKey}"]`);
+        const count = document.querySelector(`[data-rollout-count="${gridKey}"]`);
+        const status = gridKey.endsWith("success") ? "success" : "fail";
+        const statusText = status === "success" ? "Success" : "Failure";
+
+        if (!grid) return;
+        if (count) count.textContent = `${sources.length} video${sources.length === 1 ? "" : "s"}`;
+
+        if (!sources.length) {
+          grid.innerHTML = `<div class="rollout-empty">Rollout videos will be added here.</div>`;
+          return;
+        }
+
+        grid.innerHTML = sources.map((src) => {
+          const rollout = parseRolloutFile(src);
+
+          return `
+            <article class="atom-video-card ${status}">
+              <video src="${src}" controls muted playsinline preload="metadata"></video>
+              <div class="atom-video-copy">
+                <div class="atom-video-meta">
+                  <span class="atom-video-model">${rollout.model}</span>
+                  <span class="rollout-status ${status}">${statusText}</span>
+                </div>
+                <div class="atom-video-meta">
+                  <span class="atom-video-id">${rollout.taskId}</span>
+                  <span class="atom-video-skill">${rollout.skill}</span>
+                </div>
+                <p class="atom-video-prompt">${rollout.prompt}</p>
+              </div>
+            </article>
+          `;
+        }).join("");
+      };
+
+      Object.entries(rolloutVideos).forEach(([gridKey, sources]) => {
+        renderRolloutGrid(gridKey, sources);
+      });
 
       videoTabButtons.forEach((button) => {
         button.addEventListener("click", () => {
