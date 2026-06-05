@@ -99,12 +99,14 @@
         height: 52px;
         flex: 0 0 auto;
         border-radius: 50%;
+        overflow: hidden;
         filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.28));
       }
 
       .brand-mark img {
         width: 100%;
         height: 100%;
+        object-fit: cover;
       }
 
       .nav-links {
@@ -1195,7 +1197,7 @@
       <div class="nav-inner">
         <a class="brand" href="#top" aria-label="ATOM-Bench home">
           <span class="brand-mark">
-            <img src="assets/atombench-logo.svg" alt="" aria-hidden="true" />
+            <img src="assets/atom-bench-logo.jpg" alt="" aria-hidden="true" />
           </span>
           <span>ATOM-Bench</span>
         </a>
@@ -1791,20 +1793,32 @@
       const rolloutVideos = {
         "franka-success": [
           "assets/videos/franka_success/grootdmix_m2_ep1_20260523_191339.mp4",
+          "assets/videos/franka_success/lingbotvladmix_x12_ep4_20260522_175252.mp4",
           "assets/videos/franka_success/motusmix_x12_ep0_20260529_114334.mp4",
-          "assets/videos/franka_success/对偶-lingbotvladmix_m5_ep2_20260521_173742.mp4",
-          "assets/videos/franka_success/对偶-pi05dmix_x2_ep2_20260519_114319.mp4",
+          "assets/videos/franka_success/pi05dmix_x1_ep2_20260527_110109.mp4",
           "assets/videos/franka_success/对偶-smolvla_i4_ep2_20260527_142440.mp4"
         ],
         "franka-fail": [
-          "assets/videos/franka_fail/lingbotvladmix_m2_ep1_20260520_182747.mp4",
+          "assets/videos/franka_fail/lingbotvladmix_x6_ep0_20260522_181838.mp4",
           "assets/videos/franka_fail/motor-grootdmix_m3_ep7_20260524_180948.mp4",
           "assets/videos/franka_fail/motusmix_x1_ep5_20260528_220338.mp4",
           "assets/videos/franka_fail/pi05dmix_x5_ep9_20260527_115827.mp4",
           "assets/videos/franka_fail/运动错误-smolvla_m4_ep7_20260527_175251.mp4"
         ],
-        "agilex-success": [],
-        "agilex-fail": []
+        "agilex-success": [
+          "assets/videos/agilex_success_h264/groot-dm1-agilex.mp4",
+          "assets/videos/agilex_success_h264/lingbot-vla_di6_seed8_20260528_left_top_right.mp4",
+          "assets/videos/agilex_success_h264/motus_dm5_seed8_20260526_left_top_right.mp4",
+          "assets/videos/agilex_success_h264/pi_vedio_dx5_20260603_left_top_right.mp4",
+          "assets/videos/agilex_success_h264/smovla_dm6_seed0_20260524_left_top_right.mp4"
+        ],
+        "agilex-fail": [
+          "assets/videos/agilex_fail_h264/groot_dx12_seed2_20260522_left_top_right.mp4",
+          "assets/videos/agilex_fail_h264/lingbogvla_dx2_seed4_20260528_left_top_right.mp4",
+          "assets/videos/agilex_fail_h264/motus_dx7_seed2_20260527_left_top_right.mp4",
+          "assets/videos/agilex_fail_h264/pi_dx2_seed1_20260527_left_top_right.mp4",
+          "assets/videos/agilex_fail_h264/smovla_di5_seed9_20260524_left_top_right.mp4"
+        ]
       };
 
       const taskPrompts = {
@@ -1823,10 +1837,20 @@
         i5: "Pick up exactly two blocks and place them into the basket.",
         i6: "Pick up the red cube and place it into the right basket.",
         i7: "Place all non-red objects into the basket.",
+        dm1: "Pick up the basket with the left hand and place the cube into the basket with the right hand.",
+        dm5: "Pick up the bowl with the left hand and pour the coffee beans from the cup into the bowl with the right hand.",
+        dm6: "Open the drawer with the left hand, place the block into the drawer with the right hand, then close the drawer with the left hand.",
+        di5: "Pick up one cube with each hand and place exactly two cubes into the same basket, leaving the remaining cube outside.",
+        di6: "Pick up one cube with the left hand and place it into the upper basket. Pick up one cube with the right hand and place it into the lower basket.",
         x1: "Pick up exactly two red cubes and place them into the basket.",
         x2: "Pick up the non-red object to the right of the cylinder and place it into the basket.",
         x5: "Place the two smallest bottles upright into the tray.",
-        x12: "Pour the beans from the brown bean dish on the left into the bowl."
+        x6: "Place the green bottle upright onto the right tray.",
+        x12: "Pour the beans from the brown bean dish on the left into the bowl.",
+        dx2: "Pick up the basket with the left hand and place all non-red objects to the right of the cylinder into the basket with the right hand.",
+        dx5: "Place the two smallest bottles upright into the tray.",
+        dx7: "Push the block that is not red into the right marked area.",
+        dx12: "Pick up the bowl with the left hand, pick up the brown bean dish with the right hand, and pour the beans from the brown bean dish into the bowl."
       };
 
       const taskSkills = {
@@ -1835,33 +1859,41 @@
         m4: "push",
         m5: "pour",
         i4: "source_relation",
+        dm1: "pick_place",
+        dm5: "pour",
+        dm6: "access",
+        di5: "count",
+        di6: "goal_destination",
         x1: "color + count",
         x2: "source_relation + exclusion",
         x5: "reorient + size",
-        x12: "pour + color + source_relation"
+        x6: "reorient + color + goal_destination",
+        x12: "pour + color + source_relation",
+        dx2: "pick_place + source_relation + exclusion",
+        dx5: "reorient + count + size",
+        dx7: "push + exclusion + goal_destination",
+        dx12: "pour + color + source_relation"
       };
 
       const getModelName = (rawName) => {
         const normalized = rawName.toLowerCase();
 
-        if (normalized.includes("pi05")) return "Pi0.5";
+        if (normalized.includes("pi05") || normalized.includes("pi_") || normalized.startsWith("pi")) return "Pi0.5";
         if (normalized.includes("groot")) return "GROOT N1.6";
         if (normalized.includes("motus")) return "Motus";
-        if (normalized.includes("lingbotvla")) return "LingBot-VLA";
-        if (normalized.includes("smolvla")) return "SmolVLA";
+        if (normalized.includes("lingbotvla") || normalized.includes("lingbot-vla") || normalized.includes("lingbogvla")) return "LingBot-VLA";
+        if (normalized.includes("smolvla") || normalized.includes("smovla")) return "SmolVLA";
         return rawName;
       };
 
       const parseRolloutFile = (src) => {
         const filename = decodeURIComponent(src.split("/").pop());
-        const taskMatch = filename.match(/_((?:d?[mix])\d+)_ep/i);
+        const taskMatch = filename.match(/(?:^|[_-])((?:dx|dm|di|x|m|i)\d+)(?=[_-])/i);
         const taskId = taskMatch ? taskMatch[1].toLowerCase() : "unknown";
-        const modelPart = taskMatch ? filename.slice(0, taskMatch.index) : filename.replace(/\.mp4$/i, "");
-        const modelToken = modelPart.split("-").pop();
 
         return {
           filename,
-          model: getModelName(modelToken),
+          model: getModelName(filename),
           taskId,
           prompt: taskPrompts[taskId] || "Prompt will be added for this rollout task.",
           skill: taskSkills[taskId] || "rollout"
